@@ -1,8 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
 
 
-    const item = localStorage.getItem('location');
-    let divs = `<div> ${item} </div>`
+    const longitude = localStorage.getItem('longitude');
+    const latitude = localStorage.getItem('latitude')
+    
+    let divs = `<div> ${longitude} --- ${latitude} </div>`
     let holder = document.querySelector('.results')
     holder.innerHTML = divs
 
