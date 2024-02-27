@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div>
+        <header class="header">
+            <ul class="header-ul">
+                <li class="locator"><a href="./pages /locator.html">locator</a></li>
+                <li class="details"><a href="./pages /details.html">Details</a></li>
+                <li class="aboutus"><a href="./pages /about.html">About us</a></li>
+                
+            </ul>
+            <div class="sign-in-container">
+                <li class="sign-in"><a href="#">sign in</a></li>
+            </div>
+        </header>
+        <main class="body">
+            <div class="topSection">
+                <h1 class="main-page-header">Find a Bathroom Near You</h1>
+            </div>
+            <div class="bottomSection">
+                <form class="search-bar" action=  method="post">
+                    <input class = "search" type="text" name = "searchQuery"  placeholder="Search by location...">
+                    <input type="submit" style="display: none;">
+                    <div class="popup-container" id="popupContainer">
+                        <button class="use-location" type="submit">
+                            <img class='seat-icon' src="/bathroom-locator/temp-images/toilet-icon.png" alt="">
+                        </button>
+                        <div class="popup-message" id="popupMessage">
+                            Click to use current location
+                        </div>
+                    </div>
+                </form>
+            
+                
+
+            </div>
+
+            </container>
+        
+
+        </main>
+    </div>
+
+    <script src="code.js"></script>
+</body>
+</html>
