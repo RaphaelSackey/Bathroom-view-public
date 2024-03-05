@@ -37,7 +37,7 @@ function Autocomplete(){
 
 async function fetchBathroomData(latitude, longitude) {
     try {
-        const response = await fetch('http://127.0.0.1:5000/bathroomData', {
+        const response = await fetch('http://127.0.0.1:5001/bathroomData', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
