@@ -20,9 +20,8 @@ function formSubmitHandler() {
     }else{
         let latitude = place.geometry.location.lat();
         let longitude = place.geometry.location.lng();
-        localStorage.setItem('latitude',latitude)
-        localStorage.setItem('longitude',longitude)
-        window.location.href = 'results.html'
+        fetchBathroomData(latitude,longitude)
+
     }
     
 
@@ -36,3 +35,23 @@ function Autocomplete(){
 
 }
 
+async function fetchBathroomData(latitude, longitude) {
+    try {
+        const response = await fetch('http://127.0.0.1:5000/bathroomData', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ latitude, longitude }),
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        // console.log(data);
+        localStorage.setItem('apiResponse', JSON.stringify(data)); // Example: Save the response
+        window.location.href = 'results.html';
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
