@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Login</title>
+
+    <!-- External CSS libraries -->
+    <!-- Remixicons for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Importing Poppins font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Internal CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Login container -->
+    <div class ="login">
+        <!-- Background image -->
+        <img src="splash.jpg" alt="image" class="login__bg">
+
+        <!-- Login form -->
+        <form action="" class="login__form">
+            <!-- Title -->
+            <h1 class="login__title">Login</h1>
+
+            <!-- Input fields for email and password -->
+            <div class="login__inputs">
+                <div class="login__box">
+                    <input type="email" placeholder="Email ID" required class="login__input">
+                    <i class="ri-mail-fill"></i> <!-- Icon for email -->
+                </div>
+                
+                <div class="login__box">
+                    <input type="password" placeholder="Password" required class="login__input">
+                    <i class="ri-lock-password-fill"></i> <!-- Icon for password -->
+                </div>
+            </div>
+
+            <!-- Checkbox for Remember me and Forgot Password link -->
+            <div class="login__check">
+                <div class="login__check-box">
+                    <input type="checkbox" class="login__check-input" id="user-check">
+                    <label for="user-check" class="login__check-label">Remember me</label>
+                </div>
+
+                <a href="#" class="login__forgot">Forgot Password?</a>
+            </div>
+
+            <!-- Login button -->
+            <button type="submit" class="login__button">Login</button>
+
+            <!-- Link for registering -->
+            <div class="login__register">
+                Don't have an account? <a href="#">Register</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
