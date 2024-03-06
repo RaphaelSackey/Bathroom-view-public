@@ -1,0 +1,192 @@
+@import url("@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap')");
+
+/* Root variables */
+:root {
+    --white-color: hsl(0, 0%, 100%);
+    --black-color: hsl(0,0%, 0%);
+    /* Font and Typography */
+    --body-font: "Poppins", sans-serif; 
+    --h1-font-size: 1rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .813;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Poppins Font Types */
+.poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.poppins-medium {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* REGISTRATION Styling */
+.registration {
+    /* Layout and positioning */
+    position: relative;
+    height: 100vh;
+    display: grid;
+    align-items: center;
+}
+
+.registration__bg {
+    /* Background image styling */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.registration__form {
+    /* Form styling */
+    position: relative;
+    margin-inline: 1.5;
+    background-color: hsla(0, 0%, 100%, .01);
+    border: 2px solid hsla(0, 0%, 0%, 0.411);
+    padding: 2.5rem 1rem;
+    color: var(--white-color);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+}
+
+.registration__title {
+    /* Title styling */
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 1.25rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+
+}
+
+.registration__inputs,
+.registration__box {
+    display: grid;
+}
+
+.registration__inputs {
+    /* Styling for input fields container */
+    row-gap: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.registration__box {
+    /* Styling for individual input field container */
+    grid-template-columns: 1fr max-content;
+    column-gap: .75rem;
+    align-items: center;
+    border: 2px solid hsla(0, 0%, 0%, 0.411);
+    padding-inline: 1.25rem;
+    border-radius: 4rem;
+}
+
+.registration__input,
+.registration__button {
+    border: none;
+    outline: none;
+}
+
+.registration__input {
+    /* Styling for input fields */
+    width: 100%;
+    background: none;
+    color: var(--white-color);
+    padding-block: 1rem;
+}
+
+.registration__input::placeholder {
+    /* Styling for placeholder text */
+    color: var(--white-color)
+}
+
+.registration__box i {
+    /* Icon styling */
+    font-size: 1.25rem;
+}
+
+.registration__check,
+.registration__check-box {
+    /* Styling for checkbox container */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.registration__check {
+    /* Styling for checkbox and forgot password link */
+    margin-bottom: 1rem;
+    font-size: var(--small-font-size);
+}
+
+.registration__check-box {
+    /* Styling for checkbox container */
+    column-gap: .5rem;
+}
+
+.registration__check-input {
+    /* Styling for checkbox */
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--white-color);
+}
+
+.registration__button {
+    /* Styling for registration button */
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: var(--black-color);
+    border-radius: 4rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--white-color);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.registration__login {
+    /* Styling for login link */
+    font-size: var(--small-font-size);
+    text-align: center;
+}
+
+.registration__login a {
+    /* Styling for login link */
+    color: var(--white-color);
+    font-weight: 500;
+}
+
+.registration__login a:hoover {
+    /* Styling for hover effect on login link */
+    text-decoration: underline;
+}
+
+/* Media query for responsive design */
+@media screen and (min-width: 576px) {
+    .registration {
+        justify-content: center;
+    }
+    .registration__form {
+        width: 420px;
+        padding-inline: 2.5rem;
+    }
+    .registration__title {
+        margin-bottom: 2rem;
+    }
+}
