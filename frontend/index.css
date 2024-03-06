@@ -9,7 +9,7 @@ html{
 
 }
 body{
-    background: linear-gradient(to bottom, rgba(255,0,0,0), rgba(255,0,0,1));
+    background: linear-gradient(to bottom, rgba(255,0,0,0), rgb(70, 138, 180));
 
 }
 
@@ -77,6 +77,10 @@ li{
     color: rgb(27, 24, 24);
     min-width: 100vw;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
     
 }
 
@@ -93,11 +97,16 @@ li{
     border-radius: 18px;
     border: none;
     text-indent: 1.5rem;
+    padding-left: 30px; 
+    text-indent: 40px;
 }
 
 .bottomSection{
     display: flex;
-   
+    min-width:100vw ;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .search-bar {
@@ -105,15 +114,9 @@ li{
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
-
-.search {
-    padding-left: 30px; 
-    text-indent: 40px;
-    width: 20rem;
-
-}
 
 .search-bar::before {
     content: '\1F50D'; 
