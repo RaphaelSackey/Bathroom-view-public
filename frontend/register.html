@@ -23,24 +23,24 @@
         <img src="splash.jpg" alt="image" class="registration__bg">
 
         <!-- Registration form -->
-        <form action="" class="registration__form">
+        <form action="" class="registration__form" id="registrationForm">
             <!-- Title -->
             <h1 class="registration__title">Register</h1>
 
             <!-- Input fields for username, email, password, and confirm password -->
             <div class="registration__inputs">
                 <div class="registration__box">
-                    <input type="text" placeholder="Username" required class="registration__input">
+                    <input type="text" placeholder="Username" required class="registration__input" id = "username">
                     <i class="ri-user-fill"></i> <!-- Icon for username -->
                 </div>
 
                 <div class="registration__box">
-                    <input type="email" placeholder="Email ID" required class="registration__input">
+                    <input type="email" placeholder="Email ID" required class="registration__input" id ="email">
                     <i class="ri-mail-fill"></i> <!-- Icon for email -->
                 </div>
                 
                 <div class="registration__box">
-                    <input type="password" placeholder="Password" required class="registration__input">
+                    <input type="password" placeholder="Password" required class="registration__input" id = "password">
                     <i class="ri-lock-password-fill"></i> <!-- Icon for password -->
                 </div>
 
@@ -65,6 +65,7 @@
             <div class="registration__login">
                 Already have an account? <a href="login.html">Login</a>
             </div>
+            <script src="register.js"></script>
         </form>
     </div>
 </body>
