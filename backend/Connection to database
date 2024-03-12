@@ -6,7 +6,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://jrodr073:t9rippEd$@localhost/bathroom_locator'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://user:t9rippEd$@localhost/bathroom_locator'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
