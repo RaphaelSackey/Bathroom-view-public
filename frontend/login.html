@@ -2,40 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>User Login</title>
+    <title>User Login and Registration</title>
 
     <!-- External CSS libraries -->
-    <!-- Remixicons for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Importing Poppins font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Internal CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Login container -->
-    <div class ="login">
+    <!-- Login and Registration container -->
+    <div class="login">
         <!-- Background image -->
         <img src="splash.jpg" alt="image" class="login__bg">
 
-        <!-- Login form -->
-        <form action="" class="login__form">
+        <!-- Login and Registration form -->
+        <form action="#" class="login__form" id="login-form">
             <!-- Title -->
             <h1 class="login__title">Login</h1>
 
             <!-- Input fields for email and password -->
             <div class="login__inputs">
                 <div class="login__box">
-                    <input type="email" placeholder="Email ID" required class="login__input">
+                    <input type="email" placeholder="Email ID" required class="login__input" id="login-email">
                     <i class="ri-mail-fill"></i> <!-- Icon for email -->
                 </div>
                 
                 <div class="login__box">
-                    <input type="password" placeholder="Password" required class="login__input">
+                    <input type="password" placeholder="Password" required class="login__input" id="login-password">
                     <i class="ri-lock-password-fill"></i> <!-- Icon for password -->
                 </div>
             </div>
@@ -55,9 +52,72 @@
 
             <!-- Link for registering -->
             <div class="login__register">
-                Don't have an account? <a href="#">Register</a>
+                Don't have an account? <a href="#" onclick="showRegistrationForm()">Register</a>
+            </div>
+        </form>
+
+        <!-- Registration form (initially hidden) -->
+        <form action="#" class="login__form" id="registration-form" style="display: none;">
+            <!-- Title -->
+            <h1 class="login__title">Register</h1>
+
+            <!-- Input fields for email and password -->
+            <div class="login__inputs">
+                <div class="login__box">
+                    <input type="email" placeholder="Email ID" required class="login__input" id="register-email">
+                    <i class="ri-mail-fill"></i> <!-- Icon for email -->
+                </div>
+                
+                <div class="login__box">
+                    <input type="password" placeholder="Password" required class="login__input" id="register-password">
+                    <i class="ri-lock-password-fill"></i> <!-- Icon for password -->
+                </div>
+            </div>
+
+            <!-- Checkbox for Remember me (optional) -->
+            <!-- Adjust as needed based on your requirements -->
+
+            <!-- Register button -->
+            <button type="submit" class="login__button" onclick="registerUser()">Register</button>
+
+            <!-- Link for returning to login -->
+            <div class="login__register">
+                Already have an account? <a href="#" onclick="showLoginForm()">Login</a>
             </div>
         </form>
     </div>
-</body>
-</html>
+
+    <!-- JavaScript for handling form visibility and interactions -->
+    <script>
+        function showRegistrationForm() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('registration-form').style.display = 'block';
+        }
+
+        function showLoginForm() {
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('registration-form').style.display = 'none';
+        }
+
+        function registerUser() {
+            // Add JavaScript code to send registration data to the server (Flask)
+            // You can use AJAX, Fetch API, or any other method for making requests
+            // Retrieve values from the registration form fields (register-email, register-password)
+            var email = document.getElementById('register-email').value;
+            var password = document.getElementById('register-password').value;
+
+            // Example using Fetch API (replace with your actual server endpoint)
+            fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password,
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Registration successful:', data);
+                // You can handle success and redirect or perform other
