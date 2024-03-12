@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration</title>
+
+    <!-- External CSS libraries -->
+    <!-- Remixicons for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Importing Poppins font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Internal CSS -->
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <!-- Registration container -->
+    <div class="registration">
+        <!-- Background image -->
+        <img src="splash.jpg" alt="image" class="registration__bg">
+
+        <!-- Registration form -->
+        <form action="" class="registration__form">
+            <!-- Title -->
+            <h1 class="registration__title">Register</h1>
+
+            <!-- Input fields for username, email, password, and confirm password -->
+            <div class="registration__inputs">
+                <div class="registration__box">
+                    <input type="text" placeholder="Username" required class="registration__input">
+                    <i class="ri-user-fill"></i> <!-- Icon for username -->
+                </div>
+
+                <div class="registration__box">
+                    <input type="email" placeholder="Email ID" required class="registration__input">
+                    <i class="ri-mail-fill"></i> <!-- Icon for email -->
+                </div>
+                
+                <div class="registration__box">
+                    <input type="password" placeholder="Password" required class="registration__input">
+                    <i class="ri-lock-password-fill"></i> <!-- Icon for password -->
+                </div>
+
+                <div class="registration__box">
+                    <input type="password" placeholder="Confirm Password" required class="registration__input">
+                    <i class="ri-lock-password-fill"></i> <!-- Icon for password confirmation -->
+                </div>
+            </div>
+
+            <!-- Checkbox for Terms and Conditions -->
+            <div class="registration__check">
+                <div class="registration__check-box">
+                    <input type="checkbox" class="registration__check-input" id="terms-check" required>
+                    <label for="terms-check" class="registration__check-label">I agree to the Terms and Conditions</label>
+                </div>
+            </div>
+
+            <!-- Register button -->
+            <button type="submit" class="registration__button">Register</button>
+
+            <!-- Link for logging in -->
+            <div class="registration__login">
+                Already have an account? <a href="login.html">Login</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
