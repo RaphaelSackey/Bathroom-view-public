@@ -17,7 +17,7 @@ def getBathroomData():
     querystring = {"lat":latitude,"lng":longitude,"page":"1","per_page":"10","offset":"0","ada":"false","unisex":"false"}
 
     headers = {
-        "X-RapidAPI-Key": "a43aee1125mshe9adfa907a0c0abp1f8148jsn6801",
+        "X-RapidAPI-Key": "a43aee1125mshe9adfa907a0c0abp1f8148jsn680163386208",
         "X-RapidAPI-Host": "public-bathrooms.p.rapidapi.com"
     }
 
@@ -37,7 +37,7 @@ def register():
     email = data['email']
     password = data['password']
     
-    
+
     
     return jsonify(username,password,email)
 
