@@ -87,37 +87,4 @@
         </form>
     </div>
 
-    <!-- JavaScript for handling form visibility and interactions -->
-    <script>
-        function showRegistrationForm() {
-            document.getElementById('login-form').style.display = 'none';
-            document.getElementById('registration-form').style.display = 'block';
-        }
-
-        function showLoginForm() {
-            document.getElementById('login-form').style.display = 'block';
-            document.getElementById('registration-form').style.display = 'none';
-        }
-
-        function registerUser() {
-            // Add JavaScript code to send registration data to the server (Flask)
-            // You can use AJAX, Fetch API, or any other method for making requests
-            // Retrieve values from the registration form fields (register-email, register-password)
-            var email = document.getElementById('register-email').value;
-            var password = document.getElementById('register-password').value;
-
-            // Example using Fetch API (replace with your actual server endpoint)
-            fetch('/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email: email,
-                    password: password,
-                }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Registration successful:', data);
-                // You can handle success and redirect or perform other
+    
