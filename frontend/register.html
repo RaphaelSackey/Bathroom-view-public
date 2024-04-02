@@ -30,22 +30,22 @@
             <!-- Input fields for username, email, password, and confirm password -->
             <div class="registration__inputs">
                 <div class="registration__box">
-                    <input type="text" placeholder="Username" required class="registration__input" id = "username">
+                    <input type="text" placeholder="Username" required class="registration__input" name = "username">
                     <i class="ri-user-fill"></i> <!-- Icon for username -->
                 </div>
 
                 <div class="registration__box">
-                    <input type="email" placeholder="Email ID" required class="registration__input" id ="email">
+                    <input type="email" placeholder="Email ID" required class="registration__input" name ="email">
                     <i class="ri-mail-fill"></i> <!-- Icon for email -->
                 </div>
                 
                 <div class="registration__box">
-                    <input type="password" placeholder="Password" required class="registration__input" id = "password">
+                    <input type="password" placeholder="Password" required class="registration__input" name = "password">
                     <i class="ri-lock-password-fill"></i> <!-- Icon for password -->
                 </div>
 
                 <div class="registration__box">
-                    <input type="password" placeholder="Confirm Password" required class="registration__input">
+                    <input type="password" placeholder="Confirm Password" required class="registration__input" name = "ver_password">
                     <i class="ri-lock-password-fill"></i> <!-- Icon for password confirmation -->
                 </div>
             </div>
@@ -65,8 +65,9 @@
             <div class="registration__login">
                 Already have an account? <a href="login.html">Login</a>
             </div>
-            <script src="register.js"></script>
         </form>
     </div>
+
+    <script src="./register.js"></script>
 </body>
 </html>
