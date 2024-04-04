@@ -7,14 +7,33 @@
     <link rel="stylesheet" href="./results.css">
 </head>
 <body>
+    <div id="commentSection" class="comment-section">
+        <div class="comments">
+
+        </div>
+        <button id="closeComment" onclick = 'closeComment()'>Close</button>
+        <button id="writeComment" onclick = 'showWriteComment(this.getAttribute("data-restaurant-id"))'>Write Comment</button>
+    </div>
+
+    <div class="addComment">
+        <form >
+            <textarea name="commentText" cols="30" rows="10" class="commentText"></textarea>
+            <input type="hidden" name="restaurantId">
+            <input type="submit" value="Submit Comment" class="commentSubmitButton">
+        </form>
+    </div>
+    
+
     <div id="map"></div>
+    <div class="page-header"> <h1>Available Bathrooms</h1></div>
     <div class="results"></div>
     
   
+    <script src="./results.js"></script>
     <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAR6J02R4pg_tLchogqZqf7CUfsBcbMavQ&loading=async&callback=getResults">
     </script>
-    <script src="./results.js"></script>
+    
 
  
 </body>

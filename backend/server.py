@@ -84,8 +84,54 @@ def getBathroomData():
         return jsonify(response.json()) 
     else:
         return jsonify({"error": "Failed to fetch data from the external API"}), 500
-    
 
+
+
+@app.route('/validSession', methods = ['GET']) 
+def validSession():
+    if 'user_id' not in session:
+        return jsonify({'message': 'invalid'})
+    
+    return jsonify({'message': 'valid'})
+
+@app.route('/addComment', methods = ['POST'])  
+def addComment():
+    if 'user_id' not in session:
+        return jsonify({'message': 'not logged in'})
+    
+    data = request.json 
+    restaurantId = data.get('restaurantId')
+    comment = data.get('comment')
+
+    try:
+        cur = mysql.connection.cursor()
+        cur.execute('INSERT INTO comments (user_id, bathroom_id, comment ) VALUES (%s, %s, %s)', (session['user_id'], restaurantId, comment))
+        mysql.connection.commit()
+        return jsonify({'message': 'success'})
+    except Exception as e:
+        mysql.connection.rollback()
+        return jsonify({'message': f"error {str(e)}"} )
+    finally:
+        cur.close()
+
+
+@app.route('/getComments', methods = ['POST'])
+def getComments():
+    data = request.json 
+    id = data.get('bathroomId')
+
+    try:
+        cur = mysql.connection.cursor()
+        cur.execute('SELECT comments.comment, user.username FROM comments JOIN user ON comments.user_id = user.id WHERE comments.bathroom_id = %s', (id,))
+        response = response = cur.fetchall()
+        return jsonify({'message': 'success',
+                        'data': response
+                        } )
+    except Exception as e:
+        mysql.connection.rollback()
+        return jsonify({'message': f"error {str(e)}"} )
+    finally:
+        cur.close()
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)

@@ -26,7 +26,8 @@ async function register(username, email, password){
                 email : email,
                 password : password,
                 username: username
-            })
+            }),
+            
 
 
         })
