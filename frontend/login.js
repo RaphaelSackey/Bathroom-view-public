@@ -40,6 +40,4 @@ async function checkSignIn(email, password){
     }catch (error) {
         console.error('Error:', error);
     }
-
-
 }
