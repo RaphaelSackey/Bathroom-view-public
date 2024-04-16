@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.search-bar').addEventListener('submit', function(event) {
         event.preventDefault();
@@ -13,10 +14,16 @@ function formSubmitHandler() {
         console.error('Autocomplete is not initialized.');
         return;
     }
+    
+    // Show loader
+    document.getElementById('loader').style.display = 'block';
+
     let place = autocomplete.getPlace();
 
     if (!place.geometry){
         document.querySelector('.search').placeholder = 'enter a valid place'
+        // Hide loader if search fails
+        document.getElementById('loader').style.display = 'none';
     }else{
         let latitude = place.geometry.location.lat();
         let longitude = place.geometry.location.lng();
@@ -53,5 +60,8 @@ async function fetchBathroomData(latitude, longitude) {
         window.location.href = 'results.html';
     } catch (error) {
         console.error('Error:', error);
+    } finally {
+        // Hide loader after search completes
+        document.getElementById('loader').style.display = 'none';
     }
 }

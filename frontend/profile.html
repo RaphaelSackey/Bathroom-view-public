@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div>
+
+        <header class="header">
+
+            <ul class="header-ul">
+                <li class="index"><a href="./index.html">Home</a></li>
+                <!-- <li class="locator"><a href="./pages/locator.html">Locator</a></li> -->
+                <li class="details"><a href="./pages/details.html">Details</a></li>
+                <li class="aboutus"><a href="./pages/about.html">About us</a></li>
+            </ul>
+            <div class="sign-in-container">
+                <!-- Modify this link to sign out when the user is signed in -->
+                <button class="sign-in"><a href="./logout.html">Sign Out</a></button>
+            </div>
+ 
+        </header>
+
+        <main class="body">
+            <section class="profile-section">
+                <h2>Welcome User!</h2>
+                <!-- Add content here such as user details, profile picture, etc. -->
+            </section>
+
+            <section class="favorites-section">
+                <h3>Your Favorite Bathrooms</h3>
+                <div id="favorite-bathrooms">
+                    <!-- Favorite bathrooms will be dynamically added here using JavaScript -->
+                </div>
+            </section>
+
+            <section class="recent-section">
+                <h3>Recently Viewed Bathrooms</h3>
+                <div id="recent-bathrooms">
+                    <!-- Recent bathrooms will be dynamically added here using JavaScript -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="profile.js"></script>
+</body>
+</html>

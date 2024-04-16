@@ -29,7 +29,7 @@ async function checkSignIn(email, password){
 
         const data = await response.json()
         if (data.message == 'password match'){
-            window.location.href = './index.html'
+            window.location.href = './profile.html'
         }
         else if(data.message == 'wrong password'){
             alert('wrong password, try again')
