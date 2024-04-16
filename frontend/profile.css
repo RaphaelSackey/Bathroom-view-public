@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Body styles retained from original code */
+body {
+    /*background: linear-gradient(to bottom, rgba(255,0,0,0), rgb(70, 138, 180));*/
+    
+    background-image: url('homepage.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* This will ensure that the background image doesn't scroll with the content */
+}
+
+/* Updated header styles to match index.css */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 1rem 0;
+    background: rgba(112, 131, 241, 0.2);
+    box-sizing: border-box;
+    margin-top: 0;
+    margin : 0;
+    
+
+}
+
+.header-ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    margin-top: 0;
+}
+
+.sign-in-container {
+    text-align: center;
+    position: absolute;
+    right: 5%;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+li {
+    list-style-type: none;
+}
+
+button {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    background-color: rgb(198, 195, 238);
+    border: 2px solid black;
+    width: 80px; 
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+    transition-duration: 0.4s;
+    border-color: rgba(101, 115, 236, 0.651);
+}
+
+button:hover {
+    background-color: rgba(95, 109, 236, 0.377);
+    color: white;
+}
+
+.logo {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 50%; 
+    max-height: 500px; 
+    display: block; 
+}
+
+.body {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 5% -2;
+}
+
+.profile-section {
+    align-items: left;
+    font-size: xx-large;
+}
+
+/* Additional styles for favorites and recent sections */
+.favorites-section,
+.recent-section {
+    width: 80%;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #fff; /* White background for sections */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+.favorites-section h3,
+.recent-section h3 {
+    margin-bottom: 1rem;
+}

@@ -82,6 +82,11 @@
             comment_button.id = item.id
             comment_button.onclick = display_comments
 
+           
+
+
+
+
             itemDiv.appendChild(top_section)
             itemDiv.appendChild(bottom_section)
             itemDiv.append(comment_button)
