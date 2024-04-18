@@ -12,6 +12,7 @@
             itemDiv.setAttribute('data-restaurant-address', item.street + " " + item.city + " " + item.state )
             itemDiv.setAttribute('data-bathroom-data', JSON.stringify(results))
 
+            //will hold the bathroom Name and street address so flexbox can be used to align them properly
             const top_section = document.createElement('div')
             top_section.className = 'top_section'
             const bottom_section = document.createElement('div')
@@ -27,7 +28,7 @@
             street.innerText = item.street
             top_section.appendChild(street)
             
-
+            //holds the bathroom image
             const left_bottom = document.createElement('div')
             left_bottom.className = 'left_bottom'
             const img = document.createElement('img')
@@ -40,7 +41,7 @@
             
             left_bottom.appendChild(img);
 
-
+            //the space to the right of the image that displays the accessibility and other stuff
             const right_bottom = document.createElement('div')
             right_bottom.className = 'right_bottom'
 
@@ -346,7 +347,7 @@ function closeWriteComment(){
     form.style.display = 'none'
 }
 
-
+//navigates user from current location to selected bathroom
 function Navigate(event){
 
     const address = event.currentTarget.getAttribute('data-restaurant-address');
