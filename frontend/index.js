@@ -65,3 +65,32 @@ async function fetchBathroomData(latitude, longitude) {
         document.getElementById('loader').style.display = 'none';
     }
 }
+
+async function checkLoggedIn(event){
+    event.preventDefault()
+    try{
+        const response = await fetch(' http://127.0.0.1:5001/validSession', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include'
+            
+        })
+
+        if ( !response.ok){
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json()
+        console.log(data.message)
+        if (data.message == 'valid'){
+            window.location = './profile.html'
+        }
+        else if(data.message == 'invalid'){
+            alert('Sign in to view profile')
+        }
+    }catch (error) {
+        console.error('Error:', error);
+    }
+}

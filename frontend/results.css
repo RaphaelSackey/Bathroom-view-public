@@ -7,7 +7,7 @@
   margin: 0;
 }
 
-html,
+
 body {
   height: 100vh;
   margin: 0;
@@ -29,6 +29,25 @@ body {
   justify-content: center;
   margin-bottom: 1.5rem;
 }
+.loading{
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 100;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  pointer-events: none;
+  display: none;
+
+}
+
+.tenor-gif-embed{
+  width: 40%;
+  height: 40%;
+}
 
 .results{
   display: flex;
@@ -46,6 +65,12 @@ body {
   background-color: rgb(231, 225, 225);
   box-shadow: 0 0 15px rgba(0,0,0,0.2); 
   position: relative;
+  transition: all ease-in-out .1s;
+}
+
+.bathroom-card:hover{
+  transform: scale(1.05);
+  transition: all ease-in-out .2s;
 }
 
 

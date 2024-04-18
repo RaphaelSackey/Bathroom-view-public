@@ -8,7 +8,10 @@
         results.forEach((item) => {
             const itemDiv = document.createElement('div');
             itemDiv.className = 'bathroom-card'
-            
+            itemDiv.onclick = Navigate
+            itemDiv.setAttribute('data-restaurant-address', item.street + " " + item.city + " " + item.state )
+            itemDiv.setAttribute('data-bathroom-data', JSON.stringify(results))
+
             const top_section = document.createElement('div')
             top_section.className = 'top_section'
             const bottom_section = document.createElement('div')
@@ -82,10 +85,6 @@
             comment_button.id = item.id
             comment_button.onclick = display_comments
 
-           
-
-
-
 
             itemDiv.appendChild(top_section)
             itemDiv.appendChild(bottom_section)
@@ -94,7 +93,6 @@
 
             holder.appendChild(itemDiv)
 
-        
         });
     } else {
         const noneFound = document.createElement('div')
@@ -106,6 +104,7 @@
 
     // Initialize the map and attempt to place the user's location marker and bathroom markers
     await initMap(results);
+    await addToViewed(results)
 };
 
 async function initMap(results) {
@@ -179,6 +178,7 @@ async function placeBathroomMarkers(results, MarkerConstructor) {
 
 
 async function display_comments(event){
+    event.stopPropagation()
     const id = event.target.id
     console.log(`clicked ${id}`)
     try{
@@ -344,4 +344,107 @@ async function addRestaurantComment(restaurantId, comment){
 function closeWriteComment(){
     const form = document.querySelector('.addComment')
     form.style.display = 'none'
+}
+
+
+function Navigate(event){
+
+    const address = event.currentTarget.getAttribute('data-restaurant-address');
+    const encodedAddress = encodeURIComponent(address);
+    const body = document.querySelector('body')
+    body.style.padding = 0
+    const loading = document.querySelector('.loading')
+    loading.style.display = 'flex'
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            const currentLat = position.coords.latitude;
+            const currentLng = position.coords.longitude;
+
+            const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${currentLat},${currentLng}&destination=${encodedAddress}`;
+            
+            window.open(googleMapsUrl, '_blank');
+            loading.style.display = 'none'
+            body.style.padding = '1rem'
+            
+        }, function(error) {
+            console.error("Error getting the user's location: ", error);
+            alert('Error getting current location. Ensure location services are enabled.');
+        });
+    } else {
+        alert('Geolocation is not supported by this browser.');
+        loading.style.display = 'none'
+        body.style.padding = '1rem'
+    }
+    const bathroomClicked = event.currentTarget.getAttribute('data-bathroom-data')
+    addToVisited(JSON.parse(bathroomClicked), address);
+    
+}
+
+
+
+async function addToViewed(results){
+    try{
+        const response = await fetch(' http://127.0.0.1:5001/addToViewed', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(results),
+            
+            credentials: 'include'
+            
+        })
+
+        if ( !response){
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json()
+        if (data.message == 'success'){
+            console.log('view add success')
+            return
+        }
+        else if(data.message !== 'success'){
+            
+            alert('could not add viewed bathroom to profile')
+        }
+    }catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+async function addToVisited(data,address){
+    console.log(data)
+    let visited = data.filter(item =>{
+        return item.street + " " + item.city + " " + item.state === address
+    })
+
+    try{
+        const response = await fetch(' http://127.0.0.1:5001/addToVisited', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(visited),
+            
+            credentials: 'include'
+            
+        })
+
+        if ( !response){
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json()
+        if (data.message == 'success'){
+            console.log('visited add success')
+            return
+        }
+        else if(data.message !== 'success'){
+            
+            alert('could not add viewed bathroom to profile')
+        }
+    }catch (error) {
+        console.error('Error:', error);
+    }
 }

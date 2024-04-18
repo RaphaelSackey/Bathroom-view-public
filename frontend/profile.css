@@ -117,3 +117,94 @@ button:hover {
 .recent-section h3 {
     margin-bottom: 1rem;
 }
+
+.accessible{
+    width: 2rem;
+    height: 2rem;
+}
+
+.unisex{
+    width: 2rem;
+    height: 2rem;
+}
+
+#visited-bathrooms{
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+#recent-bathrooms{
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+
+.bathroomElementWrapper{
+    display: flex;
+    flex-direction: column;
+    background-color: #f1ecec;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    text-wrap:nowrap;
+    padding: 1rem;
+    transition: all ease-in-out 0.1s;
+}
+
+.bathroomName{
+    margin: 0;
+}
+
+.bathroomAddress{
+    margin: 0;
+}
+
+
+.bathroomElementWrapper:hover{
+    transform: scale(1.1);
+    transition: all ease-in-out 0.2s;
+}
+
+.loading{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    z-index: 100;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    pointer-events: none;
+    display: none;
+  
+  }
+  
+  .tenor-gif-embed{
+    width: 40%;
+    height: 40%;
+  }
+
+  .welcome-wrapper{
+    display: flex;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .welcome{
+    height: fit-content;
+    width: fit-content;
+    text-align: center;
+    margin: 0;
+  }
+  .userName{
+    height: fit-content;
+    width: fit-content;
+    text-align: center;
+    margin: 0;
+  }

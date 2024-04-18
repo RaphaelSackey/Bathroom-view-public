@@ -133,5 +133,116 @@ def getComments():
     finally:
         cur.close()
 
+@app.route('/addToViewed', methods = ['POST'])
+def viewed():
+    if 'user_id' not in session:
+        return jsonify ({'message': 'success'})
+    data = request.json
+    counter = 1
+    for data in data:
+        if counter <= 5:
+            bathroom_name = data['name']
+            address = data['street'] + " " + data['city']+ " " + data['state']
+            user_id = session['user_id']
+            bathroomId =  data['id']
+            unisex = data['unisex']
+            accessible = data['accessible']
+            try:
+                cur = mysql.connection.cursor()
+                cur.execute('insert into viewed (user_id, bathroom_id, bathroom_name, address, unisex, access) values (%s, %s, %s, %s, %s, %s)', (user_id, bathroomId, bathroom_name, address, unisex,accessible))
+                mysql.connection.commit()
+                counter += 1
+            except Exception as e:
+                mysql.connection.rollback()
+                return jsonify({'message': f"error {str(e)}"} )
+            finally:
+                cur.close()
+        else:
+            break
+        
+    return jsonify ({'message': 'success'})
+
+
+
+@app.route('/getRecentViewed', methods = ['GET'])
+def getRecentViewed():
+     try:
+        cur = mysql.connection.cursor()
+        query = """
+            SELECT v.bathroom_id, v.bathroom_name, v.address, v.unisex, v.access, u.username
+            FROM viewed AS v
+            JOIN user AS u ON v.user_id = u.id
+            WHERE v.user_id = %s
+            ORDER BY v.id DESC
+            LIMIT 5
+        """
+        cur.execute(query, (session['user_id'],))
+        results = cur.fetchall()
+        return {
+                'data': results,
+                'message': 'success'
+                }
+     except Exception as e:
+                mysql.connection.rollback()
+                return jsonify({'message': f"error {str(e)}"} )
+     finally:
+            cur.close()
+
+    
+
+
+@app.route('/addToVisited', methods = ['POST'])
+def visited():
+    if 'user_id' not in session:
+        return jsonify ({'message': 'success'})
+    
+    data = request.json
+    bathroom_name = data[0]['name']
+    address = data[0]['street'] + " " + data[0]['city']+ " " + data[0]['state']
+    user_id = session['user_id']
+    bathroomId =  data[0]['id']
+    unisex = data[0]['unisex']
+    accessible = data[0]['accessible']
+    try:
+        cur = mysql.connection.cursor()
+        cur.execute('insert into visited (user_id, bathroom_id, bathroom_name, address, unisex, access) values (%s, %s, %s, %s, %s, %s)', (user_id, bathroomId, bathroom_name, address, unisex,accessible))
+        mysql.connection.commit()
+        return jsonify ({'message': 'success'})
+    except Exception as e:
+        mysql.connection.rollback()
+        return jsonify({'message': f"error {str(e)}"} )
+    finally:
+        cur.close()
+
+
+@app.route('/getVisited', methods = ['GET'])
+def getRecentVisited():
+     try:
+        cur = mysql.connection.cursor()
+        query = """
+            SELECT v.bathroom_id, v.bathroom_name, v.address, v.unisex, v.access
+            FROM visited AS v
+            WHERE v.user_id = %s
+            ORDER BY v.id DESC
+            LIMIT 5
+        """
+        cur.execute(query, (session['user_id'],))
+        results = cur.fetchall()
+        return {
+                'data': results,
+                'message': 'success'
+                }
+     except Exception as e:
+                mysql.connection.rollback()
+                return jsonify({'message': f"error {str(e)}"} )
+     finally:
+            cur.close()
+
+    
+
+
+
+    
+
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
