@@ -18,6 +18,8 @@
             const bottom_section = document.createElement('div')
             bottom_section.className = 'bottom_section'
 
+
+
             const name = document.createElement('h2')
             name.className = 'bathroom-name'
             name.innerText = item.name
@@ -27,6 +29,8 @@
             street.className = 'bathroom-street'
             street.innerText = item.street
             top_section.appendChild(street)
+
+            
             
             //holds the bathroom image
             const left_bottom = document.createElement('div')
@@ -34,7 +38,7 @@
             const img = document.createElement('img')
             img.className = 'bathroom-card-image'
             if(!item.image){
-                img.src = '../temp-images/bathroom-img.jpg';
+                img.src = '../temp-images/tp.jpg';
             }else{
                 img.src = item.image
             }
@@ -71,25 +75,36 @@
             }
             
             
-            const distance = document.createElement('h5')
-            distance.className = 'distance'
-            distance.innerText = item.distance
-            right_bottom.appendChild(distance)
+            const distance = document.createElement('h5');
+            distance.className = 'distance';
+            const roundedDistance = parseFloat(item.distance).toFixed(2) + " Miles";
+            distance.innerText = roundedDistance;
+            right_bottom.appendChild(distance);
+            
 
 
             bottom_section.appendChild(left_bottom)
             bottom_section.appendChild(right_bottom)
+
+            const heart_button = document.createElement('button')
+            heart_button.className = 'heart_button'
+            //heart_button.innerText = 'Add Favorite'
+            heart_button.id = item.id
+            
+
+         
 
             const comment_button = document.createElement('button')
             comment_button.className = 'comment_button'
             comment_button.innerText = 'View Comments'
             comment_button.id = item.id
             comment_button.onclick = display_comments
-
+            
 
             itemDiv.appendChild(top_section)
             itemDiv.appendChild(bottom_section)
             itemDiv.append(comment_button)
+            itemDiv.append(heart_button)
 
 
             holder.appendChild(itemDiv)
@@ -449,3 +464,4 @@ async function addToVisited(data,address){
         console.error('Error:', error);
     }
 }
+
