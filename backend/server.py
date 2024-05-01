@@ -228,10 +228,31 @@ def getRecentVisited():
         """
         cur.execute(query, (session['user_id'],))
         results = cur.fetchall()
-        return {
+        return jsonify({
                 'data': results,
                 'message': 'success'
-                }
+                })
+     except Exception as e:
+                mysql.connection.rollback()
+                return jsonify({'message': f"error {str(e)}"} )
+     finally:
+            cur.close()
+
+@app.route('/getFavoriteBathrooms', methods = ['GET'])
+def getFavoriteBathrooms():
+     try:
+        cur = mysql.connection.cursor()
+        query = """
+            SELECT f.bathroom_id, f.bathroom_name, f.address, f.unisex, f.access
+            FROM Favorites AS f
+            WHERE f.user_id = %s
+        """
+        cur.execute(query, (session['user_id'],))
+        results = cur.fetchall()
+        return jsonify({
+                'data': results,
+                'message': 'success'
+                })
      except Exception as e:
                 mysql.connection.rollback()
                 return jsonify({'message': f"error {str(e)}"} )
@@ -239,8 +260,42 @@ def getRecentVisited():
             cur.close()
 
     
+@app.route('/addToFavorite', methods = ['POST'])
+def addToFavorite():
+    if 'user_id' not in session:
+        return jsonify ({'message': 'success'})
+    
+    data = request.json
+    user_id = session['user_id']
+    bathroom_id = data['id']
+    bathroom_name = data['name']
+    address = f"{data['street']} {data['city']} {data['state']}"
+    unisex = data['unisex']
+    accessible = data['accessible']
 
+    try:
+        cur = mysql.connection.cursor()
+        query_check = "SELECT 1 FROM Favorites WHERE bathroom_id = %s AND user_id = %s"
+        cur.execute(query_check, (bathroom_id, user_id))
+        exists = cur.fetchone()
 
+        if exists:
+            query_delete = "DELETE FROM Favorites WHERE bathroom_id = %s AND user_id = %s"
+            cur.execute(query_delete, (bathroom_id, user_id))
+        else:
+            query_insert = "INSERT INTO Favorites (user_id, bathroom_id, bathroom_name, address, unisex, access) VALUES (%s, %s, %s, %s, %s, %s)"
+            cur.execute(query_insert, (user_id, bathroom_id, bathroom_name, address, unisex, accessible))
+
+        mysql.connection.commit()
+        return jsonify({'message': 'success'})
+
+    except Exception as e:
+        mysql.connection.rollback()
+        return jsonify({'message': f"error {str(e)}"}), 500
+
+    finally:
+        if cur:
+            cur.close()
 
     
 

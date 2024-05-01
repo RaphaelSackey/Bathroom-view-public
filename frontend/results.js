@@ -86,10 +86,16 @@
             bottom_section.appendChild(left_bottom)
             bottom_section.appendChild(right_bottom)
 
-            const heart_button = document.createElement('button')
+            const heart_button = document.createElement('img')
             heart_button.className = 'heart_button'
+            heart_button.setAttribute('bathroom_id', item.id )
+            heart_button.setAttribute('data', JSON.stringify(item))
+            heart_button.onclick = addToFavorite
+    
+    
             //heart_button.innerText = 'Add Favorite'
             heart_button.id = item.id
+            heart_button.onclick = addToFavorite
             
 
          
@@ -121,6 +127,7 @@
     // Initialize the map and attempt to place the user's location marker and bathroom markers
     await initMap(results);
     await addToViewed(results)
+    await checkFavoriteStatus()
 };
 
 async function initMap(results) {
@@ -462,6 +469,99 @@ async function addToVisited(data,address){
         }
     }catch (error) {
         console.error('Error:', error);
+    }
+}
+
+async function addToFavorite(event){
+    event.stopPropagation()
+    try{
+        const response = await fetch(' http://127.0.0.1:5001/addToFavorite', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: event.target.getAttribute('data'),
+            
+            credentials: 'include'
+            
+        })
+
+        if ( !response){
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json()
+        if (data.message == 'success'){
+            console.log('toggled success')
+            await checkFavoriteStatus()
+            return
+        }
+        else if(data.message !== 'success'){
+            
+            alert('could not add viewed bathroom to profile')
+        }
+    }catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+
+async function checkFavoriteStatus() {
+    try {
+        const response = await fetch('http://127.0.0.1:5001/validSession', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include'
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok for session check');
+        }
+
+        const sessionData = await response.json();
+        console.log(sessionData.message);
+
+        const heartButtons = document.querySelectorAll('.heart_button');
+        if (sessionData.message === 'valid') {
+            try {
+                const favResponse = await fetch('http://127.0.0.1:5001/getFavoriteBathrooms', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include'
+                });
+
+                if (!favResponse.ok) {
+                    throw new Error('Network response was not ok for favorites');
+                }
+
+                const favData = await favResponse.json();
+                if (favData.message === 'success') {
+                    const favorites = new Set(favData.data.map(bathroom => bathroom[0]));
+                    heartButtons.forEach(heart => {
+                        if (favorites.has (parseInt(heart.getAttribute('bathroom_id'),10))) {
+                            heart.src = "../temp-images/heart.png";
+                        } else {
+                            heart.src = "../temp-images/empheart.png";
+                        }
+                    });
+                } else {
+                    heartButtons.forEach(heart => heart.style.display = 'none');
+                }
+            } catch (error) {
+                console.error('Error fetching favorites:', error);
+                heartButtons.forEach(heart => heart.style.display = 'none');
+            }
+        } else if (sessionData.message === 'invalid') {
+            heartButtons.forEach(heart => heart.style.display = 'none');
+        }
+    } catch (error) {
+        console.error('Error checking session:', error);
+        const heartButtons = document.querySelectorAll('.heart_button');
+        heartButtons.forEach(heart => heart.style.display = 'none');
     }
 }
 
