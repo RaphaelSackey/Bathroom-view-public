@@ -9,32 +9,25 @@
 </head>
 <body>
 
-    <!--<nav>
-        <div class="navbar">
-          <div class="container nav-container">
-              <input class="checkbox" type="checkbox" name="" id="" />
-              <div class="hamburger-lines">
-                <span class="line line1"></span>
-                <span class="line line2"></span>
-                <span class="line line3"></span>
-              </div>  
-            <div class="logo">
-              <h1>Bathroom Locator</h1>
-            </div>
-            <div class="menu-items">
-              <li><a href="./index.html">Home</a></li>
-              <li><a href="#">about</a></li>
-              <li><a href="#">blogs</a></li>
-              <li><a href="#">portfolio</a></li>
-              <li><a href="./pages/details.html">Contact Us</a></li>
-            </div>
-          </div>
-        </div>
-      </nav> -->
-
     <div class="loading">Routing You...
         <div class="tenor-gif-embed" data-postid="7964219712301959784" data-share-method="host" ><a href="https://tenor.com/view/go-out-toilet-paper-long-run-go-jogging-bath-tissue-gif-7964219712301959784">Go Out Toilet Paper Sticker</a>from <a href="https://tenor.com/search/go+out-stickers">Go Out Stickers</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>    
     </div>
+      <header class="header">
+
+    <ul class="header-ul">
+        <li class="Home"><a href="./index.html">Home</a></li>
+        <li class="Profile"><a href="./profile.html" onclick="checkLoggedIn(event)">Profile</a></li>
+        <li class="details"><a href="./pages/details.html">Contact Us</a></li>
+        
+        
+        
+        
+    </ul>
+    <div class="sign-in-container">
+        <button class="sign-in"><a href="./login.html">Sign In</a></button>
+    </div>
+
+</header>
     <div id="commentSection" class="comment-section">
         <div class="comments">
 
@@ -53,7 +46,29 @@
     
     
     <div id="map"></div>
-    <div class="page-header"> <h1>Available Bathrooms:</h1></div>
+    <div class="page-header"> <h1>Available Bathrooms</h1></div>
+    <section class="filter-section-container"> 
+      <div id="filters">
+        <form onsubmit="applyFilters(event)">
+          <!-- Checkbox for Unisex -->
+          <label for="unisex">
+            <input type="checkbox" id="unisex" name="unisex">
+            Unisex
+          </label>
+    
+          <!-- Checkbox for Wheelchair Accessible -->
+          <label for="wheelchair">
+            <input type="checkbox" id="wheelchair" name="wheelchair">
+            Wheelchair Accessible
+          </label>
+    
+          <!-- Submit button to apply filters -->
+          <button type="submit">Apply</button>
+        </form>
+      </div>
+      <img src="../temp-images/filte.png" alt="filter icon" onclick="show_filters()">
+    </section>
+    
     <div class="results"></div>
 
     

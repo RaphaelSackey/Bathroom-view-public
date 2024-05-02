@@ -235,7 +235,7 @@ async function display_comments(event){
                     
                     const name = document.createElement('span')
                     name.className = 'name'
-                    name.innerText = `${item[1]} said: `
+                    name.innerText = `${item[1]}: `
     
                     const comment = document.createElement('span')
                     comment.className = 'user_comment'
@@ -387,7 +387,7 @@ function Navigate(event){
             
             window.open(googleMapsUrl, '_blank');
             loading.style.display = 'none'
-            body.style.padding = '1rem'
+            body.style.padding = '0'
             
         }, function(error) {
             console.error("Error getting the user's location: ", error);
@@ -565,3 +565,69 @@ async function checkFavoriteStatus() {
     }
 }
 
+
+
+function show_filters(){
+    let filters = document.getElementById('filters');
+  if (filters.style.display === 'none' || !filters.style.display) {
+    filters.style.display = 'block';
+  } else {
+    filters.style.display = 'none';
+  }
+}
+
+function applyFilters(event) {
+    event.preventDefault(); 
+  
+    let unisexChecked = document.getElementById('unisex').checked;
+    let wheelchairChecked = document.getElementById('wheelchair').checked;
+
+    if (unisexChecked == false && wheelchairChecked == false){
+        window.location.reload()
+        return
+    }else{
+        let bathroomCards = document.querySelectorAll('.bathroom-card')
+        let bathroomData = JSON.parse(bathroomCards[0].getAttribute('data-bathroom-data'))
+        let card_position = 0
+        bathroomCards.forEach(bathroom => {
+            if (bathroomData[card_position].unisex == unisexChecked && bathroomData[card_position].accessible == wheelchairChecked){
+                bathroom.style.display = 'block'
+            }else{
+                bathroom.style.display = 'none'
+            }
+            card_position ++
+        })
+        card_position = 0
+    }
+  
+
+  }
+
+  async function checkLoggedIn(event){
+    event.preventDefault()
+    try{
+        const response = await fetch(' http://127.0.0.1:5001/validSession', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include'
+            
+        })
+
+        if ( !response.ok){
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json()
+        console.log(data.message)
+        if (data.message == 'valid'){
+            window.location = './profile.html'
+        }
+        else if(data.message == 'invalid'){
+            alert('Sign in to view profile')
+        }
+    }catch (error) {
+        console.error('Error:', error);
+    }
+}

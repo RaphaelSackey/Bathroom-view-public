@@ -11,23 +11,106 @@
 body {
   height: 100vh;
   margin: 0;
-  padding: 0 1rem;
-  background-image: url('/temp-images/bluecrack.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-
+  padding: 0;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-style: normal;
+  background-image: url('homepage.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* This will ensure that the background image doesn't scroll with the content */
+  
 }
 
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 2rem 0;
+  background: rgba(214, 231, 252, 0.726);
+  margin-bottom: 1rem;
+
+}
+
+.header-ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  
+
+
+}
+
+.sign-in-container {
+    text-align: center;
+    position: absolute;
+    right: 5%;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    
+
+}
+
+a{
+    text-decoration: none;
+    color: black;
+
+}
+
+li{
+    list-style-type: none;
+
+}
+
+.sign-in{
+    
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    background-color: rgb(198, 195, 238);
+    border: 2px solid black;
+
+    width: 90px; 
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+    transition-duration: 0.4s;
+    border-color: rgba(101, 115, 236, 0.651);
+}
+
+button:hover{
+    background-color: rgba(95, 109, 236, 0.377);
+    color: white;
+}
+
+.logo{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 50%; 
+    max-height: 500px; 
+    display: block; 
+    
+    
+
+}
 
 #map {
-    height: 50%;
+    height: 60%;
+    margin-left: 3%;
+    margin-right: 3%;
     justify-content: center;
     align-items: center;
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
     background-color: rgb(231, 225, 225);
     box-shadow: 0 0 15px rgba(0,0,0,0.5); 
   }
@@ -36,7 +119,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
+
 }
 .loading{
   position: fixed;
@@ -234,7 +317,7 @@ h2{
   width: 50%;
   right: 0;
   top: 0;
-  background-color: inherit;
+  background-color: white;
   z-index: 102;
   display: none;
 }
@@ -303,13 +386,6 @@ button {
 }
 
 
-
-
-
-/* MENU BAR CSS */
-body {
-  font-family: "Poppins", sans-serif;
-}
 
 .container {
   max-width: 1050px;
@@ -448,4 +524,26 @@ body {
 
 .nav-container input[type="checkbox"]:checked ~ .logo{
   display: none;
+}
+
+.filter-section-container{
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+  padding-right: 12rem;
+}
+.filter-section-container img{
+  height: 2rem;
+  width: auto;
+}
+#filters{
+  display: none;
+  width:fit-content;
+  height: fit-content;
+  background-color: rgb(236, 230, 230);
+  padding: .2rem;
+}
+#filters form{
+  display: flex;
+  flex-direction: column;
 }

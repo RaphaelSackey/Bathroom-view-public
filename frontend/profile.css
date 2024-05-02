@@ -139,6 +139,11 @@ button:hover {
     gap: 2rem;
     flex-wrap: wrap;
 }
+#favorite-bathrooms{
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
 
 
 .bathroomElementWrapper{

@@ -64,6 +64,38 @@ async function getUserVisitedBathrooms(){
 }
 
 
+async function getUserFavoriteBathrooms(){
+    try{
+        const response = await fetch(' http://127.0.0.1:5001/getFavoriteBathrooms', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include'
+            
+        })
+
+        if ( !response.ok){
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json()
+        console.log(data.message)
+        if (data.message == 'success'){
+            const recentBathrooms = data.data
+            generateFavoriteBathrooms(recentBathrooms)
+        }
+        else if(data.message !== 'success'){
+            
+            alert('something went wrong')
+        }
+    }catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+
+
 function generateVisitedBathrooms(data) {
     console.log(data)
     const visitedBathroomsContainer = document.getElementById("visited-bathrooms");
@@ -108,6 +140,59 @@ function generateVisitedBathrooms(data) {
         visitedBathroomsContainer.appendChild(bathroomElement)
 })
 }
+////
+
+function generateFavoriteBathrooms(data) {
+    console.log(data)
+    const FavoriteBathroomsContainer = document.getElementById("favorite-bathrooms");
+    FavoriteBathroomsContainer.innerHTML = ""; // Clear existing content
+    data.forEach(item => {
+        const bathroomElement = document.createElement("div");
+        bathroomElement.className = 'bathroomElementWrapper'
+        bathroomElement.setAttribute('data-restaurant-address', item[2])
+        bathroomElement.onclick = Navigate
+
+        const bathroomName = document.createElement("h2")
+        bathroomName.className = 'bathroomName'
+        bathroomName.innerText= item[1]
+        
+        const bathroomAddress = document.createElement("h5")
+        bathroomAddress.className = 'bathroomAddress'
+        bathroomAddress.innerText= item[2]
+
+        const imgWrapper = document.createElement("div")
+        imgWrapper.className = 'imgWrapper'
+
+        if (item[4] == 1){
+            const accessible = document.createElement("img")
+            accessible.className = 'accessible'
+            accessible.src = '../temp-images/wheelchair.png'
+
+            imgWrapper.appendChild(accessible)
+        }
+
+        if (item[3] == 1){
+            const unisex = document.createElement("img")
+            unisex.className = 'unisex'
+            unisex.src = '../temp-images/unisex.png'
+
+            imgWrapper.appendChild(unisex)
+        }
+
+        bathroomElement.appendChild(bathroomName )
+        bathroomElement.appendChild(bathroomAddress)
+        bathroomElement.appendChild(imgWrapper)
+
+        FavoriteBathroomsContainer.appendChild(bathroomElement)
+})
+}
+
+
+
+
+
+
+
 
 //greet user 
 function greet(data){
@@ -205,6 +290,7 @@ function Navigate(event){
 }
 // Call functions to generate HTML for favorite and recent bathrooms when the page loads
 window.onload = async function () {
+    await getUserFavoriteBathrooms()
     await getUserVisitedBathrooms()
     await getUserRecentBathrooms()
 };
