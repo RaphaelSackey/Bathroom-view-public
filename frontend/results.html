@@ -14,7 +14,7 @@
     </div>
       <header class="header">
 
-    <ul class="header-ul">
+      <ul class="header-ul">
         <li class="Home"><a href="./index.html">Home</a></li>
         <li class="Profile"><a href="./profile.html" onclick="checkLoggedIn(event)">Profile</a></li>
         <li class="details"><a href="./pages/details.html">Contact Us</a></li>
@@ -22,12 +22,13 @@
         
         
         
-    </ul>
+      </ul>
     <div class="sign-in-container">
         <button class="sign-in"><a href="./login.html">Sign In</a></button>
     </div>
 
 </header>
+   
     <div id="commentSection" class="comment-section">
         <div class="comments">
 
@@ -36,10 +37,12 @@
         <button id="writeComment" onclick = 'showWriteComment(this.getAttribute("data-restaurant-id"))'>Write Comment</button>
     </div>
 
-    <div class="addComment">
+    <div id="addComment" class="addComment">
         <form >
+            <h1>Tell us how you really feel:</h1>
             <textarea name="commentText" cols="30" rows="10" class="commentText"></textarea>
             <input type="hidden" name="restaurantId">
+            <button id="closeComment" onclick = 'closeAddComment()'>Close</button>
             <input type="submit" value="Submit Comment" class="commentSubmitButton">
         </form>
     </div>

@@ -7,12 +7,12 @@ body {
     background-image: url('homepage.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* This will ensure that the background image doesn't scroll with the content */
+    background-attachment: fixed; 
 }
 
 /* Updated header styles to match index.css */
 .header {
-    display: flex;
+    /* display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
@@ -20,12 +20,24 @@ body {
     background: rgba(112, 131, 241, 0.2);
     box-sizing: border-box;
     margin-top: 0;
-    margin : 0;
+    margin : 0; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: -1cap;
+    margin-left: -1cap;
+    margin-right: -1cap;
+    padding: 1rem 0;
+    /*background: rgba(112, 131, 241, 0.2);*/
+    background: rgba(214, 231, 252, 0.726);
     
 
 }
 
 .header-ul {
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,7 +45,16 @@ body {
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     font-style: normal;
-    margin-top: 0;
+    transition: ease-in-out;
+
+
+}
+.index{
+    color:black;
+}
+
+.index:hover{
+    color:white;
 }
 
 .sign-in-container {
@@ -105,17 +126,23 @@ button:hover {
 /* Additional styles for favorites and recent sections */
 .favorites-section,
 .recent-section {
-    width: 80%;
+    width: 70%;
     margin-top: 2rem;
-    padding: 1.5rem;
-    background-color: #fff; /* White background for sections */
+    padding: 1rem;
+    background-color: #c5cbf8; /* White background for sections */
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    font-size: large;
+    border-color: black;
+    font-size: large;
 }
+
 
 .favorites-section h3,
 .recent-section h3 {
     margin-bottom: 1rem;
+    font-size: larger;
+    
 }
 
 .accessible{
@@ -156,7 +183,7 @@ button:hover {
     width: fit-content;
     text-wrap:nowrap;
     padding: 1rem;
-    transition: all ease-in-out 0.1s;
+    transition: all ease-in-out .3s;
 }
 
 .bathroomName{
@@ -171,6 +198,9 @@ button:hover {
 .bathroomElementWrapper:hover{
     transform: scale(1.1);
     transition: all ease-in-out 0.2s;
+    background-color: rgb(12, 7, 26);
+    color: rgb(111, 193, 247);
+
 }
 
 .loading{
@@ -206,10 +236,32 @@ button:hover {
     width: fit-content;
     text-align: center;
     margin: 0;
+    opacity: 0;
+    animation: fadeIn .5s ease-in-out
+    forwards;
+
   }
   .userName{
     height: fit-content;
     width: fit-content;
     text-align: center;
     margin: 0;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out
+    forwards;
+
+    
+    
+  }
+
+
+
+  @keyframes fadeIn {
+    from{
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+
   }

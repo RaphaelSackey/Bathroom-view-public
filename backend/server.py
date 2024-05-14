@@ -72,7 +72,7 @@ def getBathroomData():
 
     url = "https://public-bathrooms.p.rapidapi.com/location"
 
-    querystring = {"lat":latitude,"lng":longitude,"page":"1","per_page":"10","offset":"0","ada":"false","unisex":"false"}
+    querystring = {"lat":latitude,"lng":longitude,"page":"1","per_page":"12","offset":"0","ada":"false","unisex":"false"}
 
     headers = {
         "X-RapidAPI-Key": "a43aee1125mshe9adfa907a0c0abp1f8148jsn680163386208",

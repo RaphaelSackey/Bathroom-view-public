@@ -1,6 +1,7 @@
 @import url("@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap')");
 
 
+
 body {
     font-family: "Poppins", sans-serif;
     font-weight: 500;
@@ -12,7 +13,9 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed; /* This will ensure that the background image doesn't scroll with the content */
+
 }
+
 
 .container {
     max-width: 600px;

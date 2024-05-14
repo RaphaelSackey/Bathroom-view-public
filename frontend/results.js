@@ -38,7 +38,7 @@
             const img = document.createElement('img')
             img.className = 'bathroom-card-image'
             if(!item.image){
-                img.src = '../temp-images/tp.jpg';
+                img.src = '../temp-images/spaceman.png';
             }else{
                 img.src = item.image
             }
@@ -275,6 +275,23 @@ function closeComment (){
     const comment_div = document.getElementById('commentSection')
     comment_div.classList.remove('comment-section-show')
 }
+
+function closeAddComment() {
+    const addCommentDiv = document.getElementById("addComment");
+    addCommentDiv.style.display = "none";
+    const commentText = addCommentDiv.querySelector('.commentText');
+    commentText.value = ''; // Clears the comment text
+
+    
+    // Attempt to remove the event listener to prevent form submission
+    const form = addCommentDiv.querySelector('form');
+    form.removeEventListener('submit', submitComment);
+
+    
+}
+
+
+
 
 
 async function showWriteComment(restaurantId){
