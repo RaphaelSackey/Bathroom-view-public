@@ -79,7 +79,7 @@ li{
     background-color: rgb(198, 195, 238);
     border: 2px solid black;
 
-    width: 90px; 
+    width: 102px; 
     height: 50px;
     display: flex;
     align-items: center;
@@ -465,6 +465,7 @@ h2{
   width: 100%;
   gap: 1rem;
   padding: 2rem;
+  overflow:scroll;
 }
 
 button {
@@ -478,7 +479,7 @@ button {
   align-items: center;
   width: 100%;
   background: rgb(231, 226, 226);
-  height: 6rem;
+  min-height: 6rem;
   border-radius: 10px;
   padding-left: 1rem;
 }

@@ -1,4 +1,5 @@
  async function getResults(){
+    signInOut()
     const results = JSON.parse(localStorage.getItem('apiResponse'));
     
     // Update the page content with bathroom data
@@ -336,6 +337,9 @@ document.querySelector('.addComment').addEventListener('submit', async(e) =>{
     const comment = e.target.elements['commentText'].value
     const restaurantId = e.target.elements['restaurantId'].value
     const response = await addRestaurantComment(restaurantId, comment)
+    if (comment.length == 0){
+        return
+    }
     // console.log(comment)
     // console.log(restaurantId)
     if (response === 'success'){
@@ -352,6 +356,9 @@ document.querySelector('.addComment').addEventListener('submit', async(e) =>{
 
 
 async function addRestaurantComment(restaurantId, comment){
+    if(comment.length == 0){
+        return
+    }
     try{
         const response = await fetch ('http://127.0.0.1:5001/addComment', 
         {
@@ -643,6 +650,37 @@ function applyFilters(event) {
         }
         else if(data.message == 'invalid'){
             alert('Sign in to view profile')
+        }
+    }catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+
+async function signInOut(){
+    try{
+        const response = await fetch(' http://127.0.0.1:5001/validSession', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include'
+            
+        })
+
+        if ( !response.ok){
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json()
+        const sign_in = document.querySelector('.sign-in-test')
+        if (data.message == 'valid'){
+            sign_in.innerText = ""
+            sign_in.innerText = "Sign Out"
+        }
+        else if(data.message == 'invalid'){
+            sign_in.innerText = ""
+            sign_in.innerText = "Sign In"
         }
     }catch (error) {
         console.error('Error:', error);
