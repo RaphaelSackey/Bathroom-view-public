@@ -22,14 +22,16 @@ body {
   
 }
 
+
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   padding: 2rem 0;
+  /*background: rgba(112, 131, 241, 0.2);*/
   background: rgba(214, 231, 252, 0.726);
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 
 }
 
@@ -41,6 +43,7 @@ body {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-style: normal;
+  
   
 
 
@@ -76,7 +79,7 @@ li{
     background-color: rgb(198, 195, 238);
     border: 2px solid black;
 
-    width: 90px; 
+    width: 102px; 
     height: 50px;
     display: flex;
     align-items: center;
@@ -158,20 +161,43 @@ button:hover{
   box-shadow: 0 0 15px rgba(0,0,0,0.2); 
   position: relative;
   transition: all ease-in-out .1s;
+
+
 }
 
 .bathroom-card:hover{
   transform: scale(1.05);
   transition: all ease-in-out .2s;
+
+/*Sample Hover Effect*/
+  /* transform: translate(0,0);
+  clip-path: 
+    polygon(
+      0% var(--d), 
+      var(--d) 0%, 
+      100% 0%, 
+      100% calc(100% - var(--d)), 
+      calc(100% - var(--d)) 100%, 
+      0% 100%
+    ); */
   
-  background-color: rgb(103, 142, 250);
+    /* END EFFECT */
+  
+   /* background-color: rgb(103, 142, 250);  */
+   background-color: rgb(103, 142, 250); 
+
+
   color: white;
   .right_bottom{
-    background-color: rgba(0, 0, 0, 0.904);
+    background-color: rgba(0, 0, 0, 0.904); 
+    /* background-color: rgb(17, 17, 66); */
+    color: rgb(107, 193, 214); 
+
+
   }
 
   .heart_button{
-    background-color: rgb(103, 142, 250);
+    background-color:transparent;
     transform: scale(1.05);
     transition: all ease-in-out .2s;
   }
@@ -247,7 +273,7 @@ h2{
   
 }
 
-/*FAVORITE BUTTON */
+/*HEART BUTTON (For Favorite Bathrooms) */
 
 .heart_button{
 
@@ -259,7 +285,7 @@ h2{
   background-image: url('/temp-images/empheart.png');
   background-position: center;
   background-size: cover;
-  background-color: rgb(231, 225, 225);
+  background-color: transparent;
 
 
   /* Remove default button styling */
@@ -288,7 +314,8 @@ h2{
   z-index: 100;
   width: 50%;
   height: 100%;
-  background-color: white;
+  /* background-color: rgb(67, 136, 240); */
+  background-image: url(sky.jpg);
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
   box-shadow: -2px 0 5px rgba(0,0,0,0.3);
   padding: 20px;
@@ -298,10 +325,54 @@ h2{
 
 
 #writeComment{
-  position: absolute;
+  /* position: absolute;
   left: 50%;
   bottom: 3rem;
   background-color: rgb(182, 182, 232);
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal; */
+  
+  position: absolute;
+  right: 1rem;
+  bottom: 0;
+
+  background-color: #5cb2e4;
+  color: black;
+
+  border: none;
+  border-radius: 4px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+
+  transition-duration:.5s;
+
+}
+
+#writeComment:hover{
+
+  background-color: #170830;
+  color: white;
+
+}
+
+#closeComment{
+  position: absolute;
+  left: 1rem;
+  bottom: 0;
+  background: rgb(241, 234, 234);
+  border: none;
+  border-radius: 4px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+
+  transition-duration:.5s;
+}
+
+#closeComment:hover{
+  background-color: #0e2431;
 
 }
 
@@ -320,7 +391,10 @@ h2{
   background-color: white;
   z-index: 102;
   display: none;
+ 
+
 }
+
 
 .addComment form{
   display: flex;
@@ -331,18 +405,54 @@ h2{
 }
 
 .commentSubmitButton{
-  width: 15%;
+  width: 25%;
   height: 3rem;
-  background-color:rgb(95, 185, 240);
+
   border-radius: 5px;
   border: none;
+  background-color: #bcc5f8;
+  color: black;
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style:normal;
+  
+
+  transition-duration:.5s;
+}
+
+.commentSubmitButton:hover{
+  
+  background-color: #170830;
+  color: white;
 }
 
 .commentText{
   width: 100%;
   height: 35vh;
-  background-color:rgb(231, 226, 226);
+  /* background-color: rgb(182, 177, 190); */
+  background-color: #e2eeff;
 
+
+  padding: 15px;
+  border: 1px solid #ffefef;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 1.5;
+  resize: vertical; /* Allows vertical resizing */
+  box-sizing: border-box; 
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style:normal;
+  /* color: rgb(8, 10, 29); */
+  color: rgb(0, 0, 0);
+  transition-duration: .5s;
+
+
+}
+.commentText:hover{
+
+  background-color: #c9c1f3;
 }
 
 
@@ -355,6 +465,7 @@ h2{
   width: 100%;
   gap: 1rem;
   padding: 2rem;
+  overflow:scroll;
 }
 
 button {
@@ -368,7 +479,7 @@ button {
   align-items: center;
   width: 100%;
   background: rgb(231, 226, 226);
-  height: 6rem;
+  min-height: 6rem;
   border-radius: 10px;
   padding-left: 1rem;
 }
@@ -546,4 +657,20 @@ button {
 #filters form{
   display: flex;
   flex-direction: column;
+}
+
+#filters button{
+
+  
+  background: rgb(184, 185, 238);
+  border:none;
+  border-radius: 6px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+
+}
+
+#filters button:hover{
+  background-color: rgb(26, 12, 66);
 }
