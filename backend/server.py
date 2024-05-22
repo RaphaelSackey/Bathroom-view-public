@@ -6,12 +6,7 @@ from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 CORS(app,supports_credentials=True)
-app.config['SECRET_KEY'] = 'secret'
 
-app.config['MYSQL_HOST'] = 'database-1.crk06kai8f2k.us-east-1.rds.amazonaws.com'
-app.config['MYSQL_USER'] = 'admin'
-app.config['MYSQL_PASSWORD'] = 'Aws123321'
-app.config['MYSQL_DB'] = 'Bathroom'
 mysql = MySQL(app)
 
 @app.route('/sign_in', methods = ['POST', 'GET'] )
@@ -75,8 +70,6 @@ def getBathroomData():
     querystring = {"lat":latitude,"lng":longitude,"page":"1","per_page":"10","offset":"0","ada":"false","unisex":"false"}
 
     headers = {
-        "X-RapidAPI-Key": "a43aee1125mshe9adfa907a0c0abp1f8148jsn680163386208",
-        "X-RapidAPI-Host": "public-bathrooms.p.rapidapi.com"
     }
 
     response = requests.get(url, headers=headers, params=querystring)
