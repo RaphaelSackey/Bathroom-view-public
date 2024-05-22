@@ -1,7 +1,10 @@
 #Public Restroom Locator Web Application  
 
 **Overview**  
-This web application helps users locate public restrooms based on their current location. It leverages a variety of technologies including Google Cloud, AWS RDS, Flask, and RESTful APIs to provide a seamless user experience.  
+This web application helps users locate public restrooms based on their current location. It leverages a variety of technologies including Google Cloud, AWS RDS, Flask, and RESTful APIs to provide a seamless user experience.
+
+**colaboration**
+This application was developed collaboratively with one other team member using the agile process. We conducted regular sprint meetings for planning and reviewing our progress, which facilitated continuous integration and iterative development.
    
 **Features**  
 -User Authentication: Users can sign up, log in, and have their sessions verified.  
